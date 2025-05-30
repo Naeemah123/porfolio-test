@@ -7,7 +7,7 @@ export default function HomePage(){
       <button
   onClick={async () => {
   try {
-    const response = await fetch(https://razorpay-test-cn1x.onrender.com/create-order", {
+    const response = await fetch("https://razorpay-test-cn1x.onrender.com/create-order", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
