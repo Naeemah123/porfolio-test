@@ -19,27 +19,46 @@ export default function HomePage(){
     console.log("Order created:", data);
 
     const options = {
-  key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
-  amount: 5000,
+  key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,  // Your Razorpay Key ID
+  amount: 5000,                                  // Amount in paise (₹50.00)
   currency: "INR",
   name: "My Razorpay Test",
   description: "Test Transaction",
-  order_id: data.orderId,
+  order_id: data.orderId,                        // Razorpay order id created on backend
   handler: function (response) {
     console.log("Payment Success:", response);
+    // Add your payment success handling logic here
   },
   prefill: {
     name: "Test User",
     email: "test@example.com",
     contact: "9999999999",
   },
+  notes: {
+    address: "Some address here",               // Optional extra data you can send
+  },
   theme: {
     color: "#3399cc",
   },
+  modal: {
+    ondismiss: function () {
+      console.log("Checkout form closed");
+    },
+    escape: true,                                // Allow closing checkout on ESC key
+    backdropclose: false,                        // Disable closing by clicking outside modal
+  },
   method: {
-    upi: true
-  }
+    card: true,
+    netbanking: true,
+    upi: true,
+    wallet: true,
+    emi: true,
+    paylater: true,
+  },
+  // Or alternatively to enable only UPI payments (like Google Pay), use:
+  // methods: ['upi'],
 };
+
 
 
     const rzp = new window.Razorpay(options);

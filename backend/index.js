@@ -22,7 +22,7 @@ try {
     const options = {
       amount: amount,          // Amount in paise (₹50 = 5000)
       currency: "INR",         // Currency type
-      receipt: "receipt_order_74394", // Unique order ID
+      receipt: `receipt_order_${Date.now()}`,
       payment_capture: 1,      // 1 means auto-capture after success
     };
 
