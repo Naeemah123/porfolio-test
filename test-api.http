@@ -1,0 +1,6 @@
+POST http://localhost:5000/create-order
+Content-Type: application/json
+
+{
+  "amount": 5000
+}
